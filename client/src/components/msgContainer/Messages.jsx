@@ -13,7 +13,7 @@ const Messages = () => {
         const getMessages = async () => {
             setLoading(true);
             try {
-                const res = await axios.get(`http://localhost:9000/api/messages/${selectedConversation._id}`);
+                const res = await axios.get(`https://mern-chat-app-b8mn.onrender.com/api/messages/${selectedConversation._id}`);
                 setMessages(res?.data);
             } catch (error) {
                 toast.error(error.message);

@@ -8,7 +8,7 @@ const LogoutButton = () => {
     const handleLogout = async () => {
         setLoading(true)
         try {
-            const res = await axios.post("http://localhost:9000/api/auth/logout")
+            const res = await axios.post("https://mern-chat-app-b8mn.onrender.com/api/auth/logout")
 
             if (res?.status === 200) {
                 localStorage.removeItem("authUser");

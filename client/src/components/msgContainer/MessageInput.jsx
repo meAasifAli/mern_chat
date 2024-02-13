@@ -9,7 +9,7 @@ const MessageInput = ({ selectedConversation }) => {
         setloading(true)
         // prevent page reloading
         try {
-            const res = await axios.post(`http://localhost:9000/api/messages/send/${selectedConversation._id}`, {
+            const res = await axios.post(`https://mern-chat-app-b8mn.onrender.com/api/messages/send/${selectedConversation._id}`, {
                 message
             })
             if (res.status === 201) {

@@ -20,7 +20,7 @@ const Signup = () => {
         setLoading(true)
         ev.preventDefault()
         try {
-            const res = await axios.post("http://localhost:9000/api/auth/signup", {
+            const res = await axios.post("https://mern-chat-app-b8mn.onrender.com/api/auth/signup", {
                 username: inputs.username,
                 fullname: inputs.fullname,
                 password: inputs.password,

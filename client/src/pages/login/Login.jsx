@@ -14,7 +14,7 @@ const Login = () => {
         setLoading(true)
         ev.preventDefault()
         try {
-            const res = await axios.post("http://localhost:9000/api/auth/login", { username: inputs.username, password: inputs.password })
+            const res = await axios.post("https://mern-chat-app-b8mn.onrender.com/api/auth/login", { username: inputs.username, password: inputs.password })
 
             if (res?.status === 200) {
                 localStorage?.setItem("authUser", JSON.stringify(res?.data))

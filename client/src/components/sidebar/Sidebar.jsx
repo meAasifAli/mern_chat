@@ -12,7 +12,7 @@ const Sidebar = () => {
         setLoading(true)
         const getConversations = async () => {
             try {
-                const res = await axios.get("http://localhost:9000/api/users")
+                const res = await axios.get("https://mern-chat-app-b8mn.onrender.com/api/users")
                 // const data = await res.json()
                 setConversations(res?.data)
 
