@@ -1,6 +1,8 @@
+import path from 'path'
 import express from 'express'
 import dotenv from 'dotenv'
 import cors from 'cors'
+
 import { v2 as cloudinary } from 'cloudinary'
 import cookieParser from 'cookie-parser'
 import connectWithDB from './config/db.js'
@@ -10,9 +12,9 @@ import messageRoutes from './routes/message.js'
 import { app, server } from './socket/socket.js'
 
 
+const __dirname = path.resolve()
+
 dotenv.config()
-
-
 
 
 app.use(express.json({ limit: "50mb" }))
@@ -23,6 +25,9 @@ app.use(cors({
     credentials: true
 }))
 app.use(cookieParser())
+
+
+
 
 
 //CLOUDINARY CONFIG
@@ -44,7 +49,9 @@ app.use("/api/auth", authRoutes)
 app.use("/api/users", userRoutes)
 app.use("/api/messages", messageRoutes)
 
+app.use(express.static(path.join(__dirname, "/client/dist")))
 
-
-
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client", "dist", "index.html"))
+})
 
