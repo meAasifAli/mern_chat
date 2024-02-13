@@ -1,7 +1,9 @@
 import { BsSend } from 'react-icons/bs'
 import axios from 'axios'
 import { useState } from 'react'
+import useConversation from '../../zustand/useConversation'
 const MessageInput = ({ selectedConversation }) => {
+    const { setMessages, messages } = useConversation()
     const [loading, setloading] = useState(false)
     const [message, setMessage] = useState("")
     const handleSendMessage = async (ev) => {
@@ -14,6 +16,7 @@ const MessageInput = ({ selectedConversation }) => {
             })
             if (res.status === 201) {
                 setMessage("")
+                setMessages([...messages, res?.data])
             }
         } catch (error) {
             console.log(error);
